@@ -1,70 +1,163 @@
 ﻿<!doctype html>
-<html lang="en">
+<html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PureRice Mantou</title>
+  <title>PureRice Mantou | 好吃的純米手工饅頭</title>
+  <meta name="description" content="PureRice Mantou 純米手工饅頭，使用純米穀粉製作，口感柔軟、無負擔，提供 LINE 預購。" />
   <style>
     :root {
-      --bg: #f7f3ea;
-      --ink: #1f1f1f;
-      --accent: #a14d2f;
+      --bg: #f6f1e7;
       --card: #fffdf8;
-      --line: #eadfcd;
+      --ink: #25221d;
+      --muted: #6a6257;
+      --brand: #9d4f2f;
+      --brand-soft: #f5dfd1;
+      --line: #e8ddcb;
+      --ok: #2f9e44;
     }
 
     * { box-sizing: border-box; }
 
     body {
       margin: 0;
-      font-family: "Trebuchet MS", "Segoe UI", sans-serif;
+      font-family: "Segoe UI", "Noto Sans TC", sans-serif;
       color: var(--ink);
       background:
-        radial-gradient(circle at 15% 15%, #fff8e8 0%, transparent 35%),
-        radial-gradient(circle at 80% 0%, #f2e6d4 0%, transparent 42%),
+        radial-gradient(circle at 10% 12%, #fff6df 0, transparent 32%),
+        radial-gradient(circle at 84% 0, #f0e5d4 0, transparent 40%),
         var(--bg);
-      line-height: 1.5;
     }
 
-    .wrap {
-      width: min(960px, 92vw);
+    .container {
+      width: min(1120px, 92vw);
       margin: 0 auto;
-      padding: 36px 0 64px;
     }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      backdrop-filter: blur(6px);
+      background: rgba(246, 241, 231, 0.9);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 12px 0;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      letter-spacing: 0.02em;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 0.75rem;
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav a {
+      text-decoration: none;
+      color: var(--ink);
+      border: 1px solid transparent;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 0.92rem;
+      font-weight: 600;
+    }
+
+    .nav a:hover { border-color: var(--line); }
 
     .hero {
-      padding: 24px;
+      padding: 24px 0 18px;
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 16px;
+    }
+
+    .hero-copy {
       border: 1px solid var(--line);
+      background: rgba(255, 255, 255, 0.65);
       border-radius: 18px;
-      background: rgba(255, 255, 255, 0.72);
-      backdrop-filter: blur(2px);
+      padding: 22px;
+    }
+
+    .chip {
+      display: inline-block;
+      padding: 6px 10px;
+      background: var(--brand-soft);
+      border-radius: 999px;
+      color: #6e2f17;
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 10px;
     }
 
     h1 {
-      margin: 0 0 8px;
-      font-size: clamp(2rem, 4vw, 3rem);
-      letter-spacing: 0.04em;
-    }
-
-    .tag {
-      display: inline-block;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: #f8e2d7;
-      color: #6b2c14;
-      font-weight: 700;
-      font-size: 0.85rem;
+      margin: 0;
+      line-height: 1.16;
+      font-size: clamp(1.7rem, 4vw, 2.8rem);
+      letter-spacing: 0.01em;
     }
 
     .lead {
-      margin: 14px 0 0;
-      max-width: 64ch;
+      margin: 12px 0 0;
+      color: var(--muted);
+      max-width: 52ch;
+      line-height: 1.7;
+    }
+
+    .hero-photo {
+      overflow: hidden;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      min-height: 280px;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .section-head {
+      margin-top: 14px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-size: 1.35rem;
+    }
+
+    .section-head p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
     }
 
     .grid {
-      margin-top: 28px;
+      margin-top: 14px;
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 14px;
     }
 
@@ -72,22 +165,86 @@
       background: var(--card);
       border: 1px solid var(--line);
       border-radius: 14px;
-      padding: 16px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
     }
 
-    .card h2 {
-      margin: 0 0 8px;
-      font-size: 1.1rem;
+    .card-photo {
+      aspect-ratio: 1 / 1;
+      overflow: hidden;
+    }
+
+    .card-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .card:hover .card-photo img { transform: scale(1.05); }
+
+    .card-body {
+      padding: 12px;
+    }
+
+    .title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 8px;
+    }
+
+    .title-row h3 {
+      margin: 0;
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+
+    .status {
+      font-size: 0.72rem;
+      font-weight: 700;
+      color: var(--ok);
+      white-space: nowrap;
+    }
+
+    .desc {
+      margin: 8px 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      min-height: 2.5em;
     }
 
     .price {
-      margin-top: 8px;
+      margin: 0;
+      color: var(--brand);
       font-weight: 800;
-      color: var(--accent);
+      font-size: 1.05rem;
     }
 
-    .actions {
-      margin-top: 24px;
+    .cta-wrap {
+      margin: 22px 0;
+      border: 1px solid var(--line);
+      background: #fffaf2;
+      border-radius: 16px;
+      padding: 18px;
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .cta-wrap h2 { margin: 0; }
+
+    .cta-wrap p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .btns {
+      margin-top: 14px;
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
@@ -98,61 +255,191 @@
       padding: 10px 14px;
       border-radius: 10px;
       text-decoration: none;
-      border: 1px solid transparent;
       font-weight: 700;
+      border: 1px solid transparent;
     }
 
-    .btn-main {
-      background: var(--ink);
+    .btn-primary {
       color: #fff;
+      background: var(--ink);
     }
 
-    .btn-alt {
-      background: transparent;
+    .btn-secondary {
       color: var(--ink);
       border-color: var(--ink);
+      background: transparent;
+    }
+
+    .line-card {
+      border: 1px solid var(--line);
+      background: #fff;
+      border-radius: 12px;
+      padding: 10px;
+      text-align: center;
+    }
+
+    .line-card img {
+      width: 100%;
+      max-width: 220px;
+      border-radius: 8px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .line-card p {
+      margin: 8px 0 0;
+      font-size: 0.88rem;
+      color: var(--muted);
     }
 
     footer {
-      margin-top: 28px;
+      border-top: 1px solid var(--line);
+      margin-top: 26px;
+      padding: 16px 0 26px;
+      color: var(--muted);
       font-size: 0.9rem;
-      color: #5a5448;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .cta-wrap { grid-template-columns: 1fr; }
+      .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 620px) {
+      .grid { grid-template-columns: 1fr; }
+      .topbar-inner { align-items: flex-start; flex-direction: column; }
     }
   </style>
 </head>
 <body>
-  <main class="wrap">
-    <section class="hero">
-      <span class="tag">100% Rice Flour</span>
-      <h1>PureRice Mantou</h1>
-      <p class="lead">Handmade steamed mantou crafted with pure rice flour. No shortcuts, just soft texture and clean flavor for every breakfast table.</p>
-      <div class="actions">
-        <a class="btn btn-main" href="mailto:hello@purericemantou.com">Pre-order by Email</a>
-        <a class="btn btn-alt" href="#products">View Products</a>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <div class="logo">PureRice Mantou<small>純米手工饅頭</small></div>
+      <nav class="nav">
+        <a href="#products">商品</a>
+        <a href="#about">品牌</a>
+        <a href="#order">下單</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="hero" id="about">
+      <div class="hero-copy">
+        <span class="chip">100% 純米穀粉・每日手作</span>
+        <h1>好吃的純米手工饅頭，
+          <br/>每一顆都吃得到米香與蓬鬆口感。</h1>
+        <p class="lead">以你提供的真實商品照片打造店舖首頁。先從精簡好賣款開始，讓客人一進站就能看到風味、價格與下單方式，後續可再接金流與會員系統。</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="#order">立即預購</a>
+          <a class="btn btn-secondary" href="#products">看全部商品</a>
+        </div>
+      </div>
+      <div class="hero-photo">
+        <img src="assets/images/mantou-01.jpg" alt="純米手工饅頭主視覺" />
       </div>
     </section>
 
-    <section id="products" class="grid">
-      <article class="card">
-        <h2>Classic Rice Mantou</h2>
-        <p>Lightly sweet, soft and airy. Best seller for family breakfast.</p>
-        <p class="price">NT$120 / 6 pcs</p>
-      </article>
-      <article class="card">
-        <h2>Brown Rice Walnut Mantou</h2>
-        <p>Nutty aroma with whole-grain depth and natural crunch.</p>
-        <p class="price">NT$150 / 6 pcs</p>
-      </article>
-      <article class="card">
-        <h2>Sesame Rice Mantou</h2>
-        <p>Roasted black sesame blend, fragrant and rich after steaming.</p>
-        <p class="price">NT$140 / 6 pcs</p>
-      </article>
+    <section id="products">
+      <div class="section-head">
+        <h2>人氣商品</h2>
+        <p>預設 2-3 天出貨，可冷凍保存。</p>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="card-photo"><img src="assets/images/mantou-02.jpg" alt="經典原味純米饅頭" /></div>
+          <div class="card-body">
+            <div class="title-row">
+              <h3>經典原味純米饅頭</h3>
+              <span class="status">現貨可預訂</span>
+            </div>
+            <p class="desc">口感柔軟、米香自然，適合全家早餐與點心。</p>
+            <p class="price">NT$120 / 6入</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-photo"><img src="assets/images/mantou-03.jpg" alt="黑糖純米饅頭" /></div>
+          <div class="card-body">
+            <div class="title-row">
+              <h3>黑糖純米饅頭</h3>
+              <span class="status">現貨可預訂</span>
+            </div>
+            <p class="desc">黑糖香氣更厚實，蒸熱後香甜不膩口。</p>
+            <p class="price">NT$140 / 6入</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-photo"><img src="assets/images/mantou-04.jpg" alt="芝麻純米饅頭" /></div>
+          <div class="card-body">
+            <div class="title-row">
+              <h3>芝麻純米饅頭</h3>
+              <span class="status">現貨可預訂</span>
+            </div>
+            <p class="desc">黑芝麻香與米香融合，風味層次更有記憶點。</p>
+            <p class="price">NT$150 / 6入</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-photo"><img src="assets/images/mantou-05.jpg" alt="南瓜純米饅頭" /></div>
+          <div class="card-body">
+            <div class="title-row">
+              <h3>南瓜純米饅頭</h3>
+              <span class="status">現貨可預訂</span>
+            </div>
+            <p class="desc">自然南瓜色與淡甜風味，孩子接受度高。</p>
+            <p class="price">NT$150 / 6入</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-photo"><img src="assets/images/mantou-06.jpg" alt="綜合口味純米饅頭" /></div>
+          <div class="card-body">
+            <div class="title-row">
+              <h3>綜合口味純米饅頭</h3>
+              <span class="status">現貨可預訂</span>
+            </div>
+            <p class="desc">一次吃到多種口味，適合初次嘗鮮客人。</p>
+            <p class="price">NT$160 / 6入</p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="card-photo"><img src="assets/images/mantou-01.jpg" alt="宅配禮盒" /></div>
+          <div class="card-body">
+            <div class="title-row">
+              <h3>純米饅頭宅配禮盒</h3>
+              <span class="status">可接團購</span>
+            </div>
+            <p class="desc">送禮版包裝，支援公司團購與節慶大量預訂。</p>
+            <p class="price">NT$380 / 盒</p>
+          </div>
+        </article>
+      </div>
     </section>
 
-    <footer>
-      Contact: hello@purericemantou.com | Instagram: @purericemantou
-    </footer>
+    <section class="cta-wrap" id="order">
+      <div>
+        <h2>LINE 下單最快</h2>
+        <p>目前先用 LINE 接單，確認口味、數量與收件資訊後再安排出貨。這個流程最容易先把生意跑起來，等訂單量穩定再接正式金流。</p>
+        <div class="btns">
+          <a class="btn btn-primary" href="https://line.me" target="_blank" rel="noreferrer">前往 LINE</a>
+          <a class="btn btn-secondary" href="https://github.com/cheng7764/PureRice-Mantou" target="_blank" rel="noreferrer">查看網站原始碼</a>
+        </div>
+      </div>
+      <aside class="line-card">
+        <img src="assets/images/line-contact.jpg" alt="官方 LINE 聯絡圖" />
+        <p>掃描加入官方 LINE 預購</p>
+      </aside>
+    </section>
   </main>
+
+  <footer class="container">
+    <div>PureRice Mantou | 純米手工饅頭</div>
+    <div>地址與電話可在下一版補上，先讓網站上線開始接單。</div>
+  </footer>
 </body>
 </html>
